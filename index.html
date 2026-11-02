@@ -149,5 +149,23 @@ initial-scale=1.0">
       <p>Type: Ogee with Happy Diwali</p>
 
      <p>My textile design and creative work.</p>
+<div id="popup"
+onclick="this.style.display='none'"
+  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:999;">
+<img id="popupImg" alt="Enlarged view of selected design" style="max-width:95%; max-height:95%;">
+</div>
+
+<script>
+  const images = document.querySelectorAll('img');
+  const popup = document.getElementById('popup');
+  const popupImg = document.getElementById('popupImg');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      popup.style.display = 'flex';
+      popupImg.src = img.src;
+    });
+  });
+</script>
 </body>
 </html>
