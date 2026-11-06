@@ -1,216 +1,824 @@
-<!DOCTPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport"
-content="width=device-width,
-initial-scale=1.0">
-<meta property="og:title" content="Ravi Kumar Portfolio">
-<meta property="og:description" content="Textile and Motif Designer from Ballia, UP">
-<meta property="og:image" content="https://ravidesigner05.github.io/MyPortfolio/images/my photo.jpg">
-<meta property="og:type" content="website">
-    <title>Ravi Kumar Portfolio</title>
-    <meta name="google-site-verification"
-    content="C2lN-AQIFCobQjXG6BJ1JU85u3f69MSDAMgzjytRDKo" />
-    <meta name="description"
-    content="Ravi Kumar, Textile and Motif Designer from Ballia, UP. View my textile design portfolio.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Ravi Kumar's textile and motif design portfolio, featuring weaving patterns, geometric designs, and creative textile work.">
+  <meta property="og:title" content="Ravi Kumar | Textile & Motif Designer">
+  <meta property="og:description" content="Textile and motif designer from Ballia, India. Explore Ravi Kumar's portfolio of patterns and textile designs.">
+  <meta property="og:image" content="https://ravidesigner05.github.io/MyPortfolio/images/my%20pic.jpg">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="C2lN-AQIFCobQjXG6BJ1JU85u3f69MSDAMgzjytRDKo">
+  <meta name="theme-color" content="#f7f5f0">
+  <title>Ravi Kumar | Textile & Motif Designer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202b25;
+      --muted: #647067;
+      --paper: #f7f5f0;
+      --surface: #fffefa;
+      --accent: #52705b;
+      --accent-dark: #3d5745;
+      --line: #e7e4dc;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #b88d55;
+      outline-offset: 4px;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      border-bottom: 1px solid rgb(32 43 37 / 8%);
+      background: rgb(247 245 240 / 94%);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      width: min(1120px, calc(100% - 48px));
+      min-height: 72px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .nav-links .nav-contact {
+      padding: 9px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      color: var(--accent-dark);
+    }
+
+    .nav-links .nav-contact:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    main,
+    .footer-wrap {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      min-height: 570px;
+      padding: 76px 0 84px;
+      align-items: center;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      margin-bottom: 22px;
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.3rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 1.04;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .hero-copy {
+      max-width: 540px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      padding: 0 21px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.92rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--accent-dark);
+    }
+
+    .button-secondary:hover {
+      background: #e9eee8;
+      color: var(--accent-dark);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      width: min(100%, 360px);
+      justify-self: center;
+    }
+
+    .portrait-wrap::before {
+      position: absolute;
+      z-index: -1;
+      inset: 20px -20px -20px 20px;
+      border: 1px solid #c8d0c4;
+      border-radius: 48% 48% 18px 18px;
+      content: "";
+    }
+
+    .portrait {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 48% 48% 18px 18px;
+      background: #e9e5db;
+      object-fit: cover;
+    }
+
+    .location {
+      position: absolute;
+      right: -24px;
+      bottom: 26px;
+      padding: 11px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: 0 12px 30px rgb(32 43 37 / 8%);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .section {
+      padding: 76px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      margin-bottom: 32px;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 470px;
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+
+    .about-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: start;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 15px;
+      border: 1px solid #dfe3da;
+      border-radius: 999px;
+      background: #eff1eb;
+      color: #435448;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .projects-section {
+      padding-bottom: 92px;
+    }
+
+    .project-count {
+      margin: 0 0 5px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgb(32 43 37 / 3%);
+      transition: box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgb(32 43 37 / 9%);
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      background: #eeece5;
+      cursor: zoom-in;
+    }
+
+    .project-image img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      transition: transform 240ms ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.025);
+    }
+
+    .project-info {
+      padding: 17px 18px 19px;
+    }
+
+    .project-info h3 {
+      margin-bottom: 4px;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .project-info p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .contact-section {
+      display: flex;
+      padding: 48px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      border-radius: 18px;
+      background: #e9eee8;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 8px;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.2;
+    }
+
+    .contact-section p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-wrap p {
+      margin: 0;
+    }
+
+    .lightbox {
+      position: relative;
+      width: min(92vw, 1050px);
+      max-width: none;
+      max-height: 90vh;
+      padding: 18px;
+      overflow: visible;
+      border: 1px solid rgb(255 255 255 / 18%);
+      border-radius: 14px;
+      background: #172019;
+      color: white;
+    }
+
+    .lightbox::backdrop {
+      background: rgb(13 18 14 / 88%);
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox img {
+      display: block;
+      width: 100%;
+      max-height: calc(90vh - 80px);
+      object-fit: contain;
+    }
+
+    .lightbox p {
+      margin: 12px 44px 0 0;
+      color: #e2e8e1;
+      font-size: 0.92rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 20%);
+      border-radius: 50%;
+      background: #fffefa;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        min-height: 0;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        gap: 40px;
+      }
+
+      .contact-section {
+        padding: 36px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      html {
+        scroll-padding-top: 5rem;
+      }
+
+      .nav-wrap,
+      main,
+      .footer-wrap {
+        width: min(100% - 36px, 480px);
+      }
+
+      .nav-wrap {
+        min-height: 64px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      .brand {
+        font-size: 1.05rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+
+      .nav-links .nav-contact {
+        padding: 3px 11px;
+      }
+
+      .hero {
+        padding: 56px 0 64px;
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 13vw, 4.2rem);
+      }
+
+      .hero-copy {
+        font-size: 1rem;
+      }
+
+      .portrait-wrap {
+        width: min(78%, 300px);
+      }
+
+      .location {
+        right: -12px;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .project-grid {
+        gap: 13px;
+      }
+
+      .project-info {
+        padding: 13px 12px 15px;
+      }
+
+      .project-info h3 {
+        font-size: 1.05rem;
+      }
+
+      .project-info p {
+        font-size: 0.78rem;
+      }
+
+      .contact-section {
+        padding: 28px 22px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 0.74rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-     <h1>Ravi Kumar Portfolio</h1>
-     <div style="text-align:center;">
-       <img src="images/my%20pic.jpg"
-               alt="Ravi Kumar"
-               width="180"
-               style="border-radius:50%; object-fit:cover; height:180px;">
-       <h2>Ravi Kumar</h2>
-       <p>Textile & Motif Designer</p>
-       <p>📍 Ballia, UP, India</p>
-       <p>ravikr349td@gmail.com</p>
-     </div>
-     <h3>About Me</h3>
-     <p>Main ek textile and motif designer hun.
-          mujhe weaving patterns and hand embroidery karna pasand hai.</p>
-     </p>
-     <h2>Textile & Graphic Designer</h2>
-     <p>Welcome to my creative world!</p>
-     <h2>My Skills</h2>
-     <ul>
-         <li>Textile Design</li>
-         <li>Weaving Patterns</li>
-         <li>Sketching</li>
-         <li>Graphic Design</li>
-         <li>Hand Embroidery</li>
-     </ul>
+  <header class="site-header">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">Ravi Kumar</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Portfolio</a>
+        <a class="nav-contact" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-     <h2>My Projects</h2>
-<h2>My Textile Design</h2>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Textile &amp; Motif Designer · Ballia, India</p>
+        <h1 id="hero-title">Patterns with a <span>personal touch.</span></h1>
+        <p class="hero-copy">
+          I’m Ravi, a textile and motif designer who enjoys creating expressive
+          patterns, exploring weaving designs, and bringing ideas to life
+          through hand embroidery.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">Explore my work</a>
+          <a class="button button-secondary" href="mailto:ravikr349td@gmail.com">Get in touch</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <img
+          class="portrait"
+          src="images/my%20pic.jpg"
+          alt="Portrait of Ravi Kumar"
+          width="360"
+          height="450"
+          fetchpriority="high">
+        <span class="location">Based in Ballia, UP</span>
+      </div>
+    </section>
 
-<div>
-  <h3>My First Design</h3>
-  <a href="images/diamond%20pattern.JPG" target="_blank">
-    <img src="images/diamond%20pattern.JPG"
-         alt="My diamond textile design"
-         width="400">
-  </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Diamond Pattern</p>
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A little about me</p>
+          <h2 id="about-title">Design rooted in detail.</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>
+            I’m a textile and motif designer from Ballia, Uttar Pradesh. I enjoy
+            developing patterns for textiles and exploring the rhythm, shape,
+            and detail that make each design feel unique.
+          </p>
+          <p>
+            From weaving patterns and sketching to graphic design and hand
+            embroidery, I love learning through making and sharing the work
+            along the way.
+          </p>
+        </div>
+        <div class="skills" aria-label="Design skills">
+          <span class="skill">Textile Design</span>
+          <span class="skill">Weaving Patterns</span>
+          <span class="skill">Sketching</span>
+          <span class="skill">Graphic Design</span>
+          <span class="skill">Hand Embroidery</span>
+        </div>
+      </div>
+    </section>
 
-<div>
-   <h3>My Second Design</h3>
-   <a href="images/half-drop%20pattern.JPG" target="_blank">
-     <img src="images/half-drop%20pattern.JPG"
-          alt="My half-drop textile design"
-          width="600">
-   </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Half-Drop Pattern</p>
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 id="projects-title">Textile design portfolio</h2>
+          <p class="section-intro">A collection of patterns and textile explorations. Select a design to view it in detail.</p>
+        </div>
+        <p class="project-count">13 designs</p>
+      </div>
 
-<div>
-    <h3>My Third Design</h3>
-    <a href="images/half-drop%202%20pattern.JPG" target="_blank">
-      <img src="images/half-drop%202%20pattern.JPG"
-           alt="My half-drop 2 textile design"
-           width="300">
-    </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Half-Drop 2 Pattern</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Diamond Pattern" aria-label="View Diamond Pattern in a larger preview">
+            <img src="images/diamond%20pattern.JPG" alt="Diamond pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Diamond Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Half-Drop Pattern" aria-label="View Half-Drop Pattern in a larger preview">
+            <img src="images/half-drop%20pattern.JPG" alt="Half-drop pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Half-Drop Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Half-Drop 2 Pattern" aria-label="View Half-Drop 2 Pattern in a larger preview">
+            <img src="images/half-drop%202%20pattern.JPG" alt="Second half-drop pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Half-Drop 2 Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Half-Drop 3 Pattern" aria-label="View Half-Drop 3 Pattern in a larger preview">
+            <img src="images/half-drop%203%20pattern.JPG" alt="Third half-drop pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Half-Drop 3 Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Half-Drop 4 Pattern" aria-label="View Half-Drop 4 Pattern in a larger preview">
+            <img src="images/half-drop%204%20pattern.jpg" alt="Fourth half-drop pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Half-Drop 4 Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Ogee Pattern" aria-label="View Ogee Pattern in a larger preview">
+            <img src="images/ogee%20pattern.JPG" alt="Ogee pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Ogee Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Curved Line Base Pattern" aria-label="View Curved Line Base Pattern in a larger preview">
+            <img src="images/curved%20line%20base%20pattern.JPG" alt="Curved line base textile pattern" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Curved Line Base Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Geometric Pattern" aria-label="View Geometric Pattern in a larger preview">
+            <img src="images/geometric%20pattern%20copy.jpg" alt="Geometric textile pattern" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Geometric Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Ogee with Happy Diwali" aria-label="View Ogee with Happy Diwali in a larger preview">
+            <img src="images/ogee%20with%20Happy%20Diwali.JPG" alt="Ogee design with a Happy Diwali greeting" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Ogee with Happy Diwali</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Reverse Pattern 2" aria-label="View Reverse Pattern 2 in a larger preview">
+            <img src="images/reverse%20pattern%202.jpg" alt="Reverse pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Reverse Pattern 2</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Brick Pattern" aria-label="View Brick Pattern in a larger preview">
+            <img src="images/brick%20pattern.jpg" alt="Brick pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Brick Pattern</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Design for Bedsheets" aria-label="View Design for Bedsheets in a larger preview">
+            <img src="images/design%20for%20bedsheets.jpg" alt="Textile pattern designed for bedsheets" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Design for Bedsheets</h3><p>Textile Design</p></div>
+        </article>
+        <article class="project-card">
+          <button class="project-image" type="button" data-title="Reverse Pattern" aria-label="View Reverse Pattern in a larger preview">
+            <img src="images/Reverse%20Pattern%20copy.jpg" alt="Reverse pattern textile design" width="600" height="450" loading="lazy" decoding="async">
+          </button>
+          <div class="project-info"><h3>Reverse Pattern</h3><p>Textile Design</p></div>
+        </article>
+      </div>
+    </section>
 
-<div>
-    <h3>My Fourth Design</h3>
-    <a href="images/half-drop%203%20pattern.JPG" target="_blank">
-      <img src="images/half-drop%203%20pattern.JPG"
-           alt="My half-drop 3 textile design"
-           width="500">
-    </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Half-Drop 3 Pattern</p>
-<div>	
-    <h3>My Fifth Design</h3>
-    <a href="images/half-drop%204%20pattern.jpg" target="_blank">
-      <img src="images/half-drop%204%20pattern.jpg"
-           alt="My half-drop 4 textile design"
-           width="600">
-    </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Half-Drop 4 Pattern</p>
-<div>
-    <h3>My Sixth Design</h3>
-    <a href="images/ogee%20pattern.JPG" target="_blank">
-      <img src="images/ogee%20pattern.JPG"
-           alt="My ogee pattern textile design"
-           width="700">
-    </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Ogee Pattern</p>
-<div>
-    <h3>My Seventh Design</h3>
-    <a href="images/curved%20line%20base%20pattern.JPG" target="_blank">
-      <img src="images/curved%20line%20base%20pattern.JPG"
-           alt="My curved line base pattern textile design"
-           width="500">
-    </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Curved Line Base Pattern</p>
-<div>
-     <h3>My Eighth design</h3>
-     <a href="images/geometric pattern copy.jpg" target="_blank">
-       <img src="images/geometric pattern copy.jpg"
-            alt="My geometric pattern"
-            width="550">
-     </a>
-</div>
-     <p>Design by Ravi Kumar</p>
-     <p>Category: Textile Design</p>
-     <p>Type: Geometric Pattern</p>
-<div>
-     <h3>My Ninth Design</h3>
-     <a href="images/ogee with Happy Diwali.JPG" target="_blank">
-       <img src="images/ogee with Happy Diwali.JPG"
-            alt="My ogee with Happy Diwali textile design"
-            width="600">
-     </a>
-</div>
-      <p>Design by Ravi Kumar</p>
-      <p>Category: Textile Design</p>
-      <p>Type: Ogee with Happy Diwali</p>
-<div>
-     <h3>My Tenth Design</h3>
-     <a href="images/reverse pattern 2.jpg" target="_blank">
-       <img src="images/reverse%20pattern%202.jpg"
-            alt="My reverse pattern textile design"
-            width="500">
-     </a>
-</div>
-      <p>Design by Ravi Kumar</p>
-      <p>Category: Textile Design</p>
-      <p>Type: Reverse Pattern 2</p>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Let’s connect</p>
+        <h2 id="contact-title">Have a project in mind?</h2>
+        <p>I’d be happy to hear from you and talk about design.</p>
+      </div>
+      <a class="button" href="mailto:ravikr349td@gmail.com">Email Ravi</a>
+    </section>
+  </main>
 
-<div>
-     <h3>My Eleventh Design</h3>
-     <a href="images/brick pattern.jpg" target="_blank">
-       <img src="images/brick%20pattern.jpg"
-            alt="My brick pattern textile design"
-            width="500">
-     </a>
-</div>
-      <p>Design by Ravi Kumar</p>
-      <p>Category: Textile Design</p>
-      <p>Type: Brick Pattern</p>
-<div>
-     <h3>My Twelfth Design</h3>
-     <a href="images/design for bedsheets.jpg" target="_blank">
-       <img src="images/design%20for%20bedsheets.jpg"
-            alt="My design for bedsheets textile design"
-            width="500">
-     </a>
-</div>
-      <p>Design by Ravi Kumar</p>
-      <p>Category: Textile Design</p>
-      <p>Type: Design for Bedsheets</p> 
-<div>
-     <h3>My Thirteenth Design</h3>
-     <a href="images/Reverse Pattern copy.jpg" target="_blank">
-       <img src="images/Reverse%20Pattern%20copy.jpg"
-            alt="My reverse pattern textile design"
-            width="500">
-     </a>
-</div>
-      <p>Design by Ravi Kumar</p>
-      <p>Category: Textile Design</p>
-      <p>Type: Reverse Pattern</p>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <p>© <span id="current-year">2026</span> Ravi Kumar</p>
+      <p>Textile &amp; Motif Designer · Ballia, India</p>
+    </div>
+  </footer>
 
-    <p>My textile design and creative work.</p>
-<div id="popup"
-onclick="this.style.display='none'"
-  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:999;">
-<img id="popupImg" alt="Enlarged view of selected design" style="max-width:95%; max-height:95%;">
-</div>
+  <dialog class="lightbox" id="lightbox" aria-label="Design preview">
+    <button class="lightbox-close" type="button" aria-label="Close design preview">&times;</button>
+    <img id="lightbox-image" alt="">
+    <p id="lightbox-caption"></p>
+  </dialog>
 
-<script>
-  const images = document.querySelectorAll('img');
-  const popup = document.getElementById('popup');
-  const popupImg = document.getElementById('popupImg');
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxCaption = document.getElementById("lightbox-caption");
 
-  images.forEach(img => {
-    img.addEventListener('click', () => {
-      popup.style.display = 'flex';
-      popupImg.src = img.src;
+    document.querySelectorAll(".project-image").forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.querySelector("img");
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightboxCaption.textContent = button.dataset.title;
+        lightbox.showModal();
+      });
     });
-  });
-</script>
+
+    document.querySelector(".lightbox-close").addEventListener("click", () => {
+      lightbox.close();
+    });
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        lightbox.close();
+      }
+    });
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
