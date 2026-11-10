@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Pattern Match — ek mazedaar textile motif memory game.">
+  <title>Pattern Match — Memory Game</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202b25;
+      --muted: #647067;
+      --paper: #f7f5f0;
+      --surface: #fffefa;
+      --accent: #52705b;
+      --accent-dark: #3d5745;
+      --line: #e7e4dc;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 32px 18px;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgb(200 213 193 / 36%), transparent 32rem),
+        var(--paper);
+      color: var(--ink);
+    }
+
+    .game {
+      width: min(100%, 620px);
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 28px;
+      color: var(--accent-dark);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+    }
+
+    .intro {
+      margin: 12px 0 26px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .panel {
+      padding: clamp(18px, 5vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 16px 50px rgb(32 43 37 / 7%);
+    }
+
+    .toolbar {
+      display: flex;
+      margin-bottom: 22px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .stat {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .stat strong {
+      margin-left: 5px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #b88d55;
+      outline-offset: 4px;
+    }
+
+    .restart {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 650;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .restart:hover {
+      transform: translateY(-1px);
+      background: var(--accent-dark);
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(7px, 2vw, 12px);
+    }
+
+    .card {
+      min-width: 0;
+      padding: 0;
+      aspect-ratio: 1;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      cursor: pointer;
+      perspective: 700px;
+    }
+
+    .card-inner {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 240ms ease;
+    }
+
+    .card.is-revealed .card-inner,
+    .card.is-matched .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dfe3da;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      font-size: clamp(1.6rem, 8vw, 2.8rem);
+    }
+
+    .card-front {
+      background: #e9eee8;
+      color: var(--accent-dark);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--surface);
+    }
+
+    .card.is-matched .card-back {
+      border-color: #b7c8b7;
+      background: #eff4ed;
+    }
+
+    .card:disabled {
+      cursor: default;
+    }
+
+    .message {
+      min-height: 1.6em;
+      margin: 18px 0 0;
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 22px 14px;
+      }
+
+      .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="game">
+    <a class="back-link" href="index.html">← Portfolio par wapas jaayein</a>
+    <p class="eyebrow">Textile motif memory game</p>
+    <h1>Pattern Match</h1>
+    <p class="intro">Ek jaise motifs ke jode dhoondhiye. Kam moves mein saare jode milaiye!</p>
+
+    <section class="panel" aria-label="Pattern Match game">
+      <div class="toolbar">
+        <div class="stats" aria-label="Game statistics">
+          <p class="stat">Moves<strong id="moves">0</strong></p>
+          <p class="stat">Time<strong id="time">00:00</strong></p>
+        </div>
+        <button class="restart" id="restart" type="button">Naya game</button>
+      </div>
+      <div class="board" id="board" aria-label="Game cards"></div>
+      <p class="message" id="message" role="status" aria-live="polite">Shuru karne ke liye koi bhi card chunein.</p>
+    </section>
+  </main>
+
+  <script>
+    const board = document.getElementById("board");
+    const movesDisplay = document.getElementById("moves");
+    const timeDisplay = document.getElementById("time");
+    const message = document.getElementById("message");
+    const symbols = ["🌸", "🌿", "🌀", "✨", "💠", "🍃"];
+    let firstCard = null;
+    let locked = false;
+    let moves = 0;
+    let matchedPairs = 0;
+    let startedAt = null;
+    let timerId = null;
+    let mismatchTimeout = null;
+
+    function formatTime(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
+      const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${seconds}`;
+    }
+
+    function updateTime() {
+      if (startedAt !== null) {
+        timeDisplay.textContent = formatTime(Math.floor((Date.now() - startedAt) / 1000));
+      }
+    }
+
+    function revealCard(card) {
+      card.classList.add("is-revealed");
+      card.setAttribute("aria-pressed", "true");
+      card.setAttribute("aria-label", `Motif ${card.dataset.symbol}`);
+    }
+
+    function hideCard(card) {
+      card.classList.remove("is-revealed");
+      card.setAttribute("aria-pressed", "false");
+      card.setAttribute("aria-label", "Chhupa hua motif");
+    }
+
+    function chooseCard(card) {
+      if (locked || card.disabled || card === firstCard) {
+        return;
+      }
+
+      if (startedAt === null) {
+        startedAt = Date.now();
+        timerId = window.setInterval(updateTime, 1000);
+      }
+
+      revealCard(card);
+
+      if (firstCard === null) {
+        firstCard = card;
+        return;
+      }
+
+      moves += 1;
+      movesDisplay.textContent = moves.toString();
+      const secondCard = card;
+
+      if (firstCard.dataset.symbol === secondCard.dataset.symbol) {
+        firstCard.classList.add("is-matched");
+        secondCard.classList.add("is-matched");
+        firstCard.disabled = true;
+        secondCard.disabled = true;
+        matchedPairs += 1;
+        firstCard = null;
+
+        if (matchedPairs === symbols.length) {
+          window.clearInterval(timerId);
+          updateTime();
+          message.textContent = `Shabash! Aapne ${moves} moves mein ${timeDisplay.textContent} mein game poora kiya.`;
+        } else {
+          message.textContent = "Sahi joda! Agla joda dhoondhiye.";
+        }
+        return;
+      }
+
+      locked = true;
+      message.textContent = "Yeh joda match nahi hua. Phir koshish karein!";
+      mismatchTimeout = window.setTimeout(() => {
+        hideCard(firstCard);
+        hideCard(secondCard);
+        firstCard = null;
+        locked = false;
+        mismatchTimeout = null;
+      }, 850);
+    }
+
+    function startGame() {
+      window.clearInterval(timerId);
+      window.clearTimeout(mismatchTimeout);
+      const cards = [...symbols, ...symbols];
+
+      for (let index = cards.length - 1; index > 0; index -= 1) {
+        const randomIndex = Math.floor(Math.random() * (index + 1));
+        [cards[index], cards[randomIndex]] = [cards[randomIndex], cards[index]];
+      }
+
+      firstCard = null;
+      locked = false;
+      moves = 0;
+      matchedPairs = 0;
+      startedAt = null;
+      timerId = null;
+      mismatchTimeout = null;
+      movesDisplay.textContent = "0";
+      timeDisplay.textContent = "00:00";
+      message.textContent = "Shuru karne ke liye koi bhi card chunein.";
+      board.replaceChildren();
+
+      cards.forEach((symbol) => {
+        const card = document.createElement("button");
+        card.className = "card";
+        card.type = "button";
+        card.dataset.symbol = symbol;
+        card.setAttribute("aria-label", "Chhupa hua motif");
+        card.setAttribute("aria-pressed", "false");
+        card.innerHTML = `<span class="card-inner">
+          <span class="card-face card-front" aria-hidden="true">✦</span>
+          <span class="card-face card-back" aria-hidden="true">${symbol}</span>
+        </span>`;
+        card.addEventListener("click", () => chooseCard(card));
+        board.append(card);
+      });
+    }
+
+    document.getElementById("restart").addEventListener("click", startGame);
+    startGame();
+  </script>
+</body>
+</html>
